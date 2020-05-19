@@ -9,10 +9,25 @@
                         <li class="breadcrumb-item">
                             <a href="{{ .Site.BaseURL }}">Home</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+                        {{ template "breadcrumb" dict "currentPage" .Page "id" .File.UniqueID }}
                     </ol>
                 </nav>
             </div>
         </div>
     </div>
 </section>
+
+{{ define "breadcrumb" }}
+    {{ if .currentPage.Parent }}
+        {{ if ne .currentPage.Parent .IsHome }}
+            {{ template "breadcrumb" dict "currentPage" .currentPage.Parent }}
+        {{ end }}
+        {{ if eq .id .currentPage.File.UniqueID }}
+        <li class="breadcrumb-item active" aria-current="page">{{ .currentPage.Title }}</li>
+        {{ else }}
+            <li class="breadcrumb-item">
+                <a href="{{ .currentPage.Permalink }}">{{ .currentPage.Title }}</a>
+            </li>
+        {{ end }}
+    {{ end }}
+{{ end }}

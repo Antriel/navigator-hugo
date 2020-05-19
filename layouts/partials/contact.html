@@ -14,80 +14,40 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            {{ "<!-- Contact Details -->" | safeHTML }}
-            <div class="col-12 col-md-6">
-                <div class="map">
-                    <div id="map" data-lat="{{ .Site.Params.contact.mapLatitude }}" data-long="{{ .Site.Params.contact.mapLongitude }}" data-marker="{{ .Site.Params.contact.mapMarker | absURL }}"></div>
-                </div>
-            </div>
-            {{ "<!-- Contact Form -->" | safeHTML }}
-            <div class="contact-form col-12 col-md-6 ">
-                <form id="contact-form" method="post" action="sendmail.php" role="form">
-                    <div class="form-group">
-                        <input type="text" placeholder="Your Name" class="form-control" name="name" id="name">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="email" placeholder="Your Email" class="form-control" name="email" id="email">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" placeholder="Subject" class="form-control" name="subject" id="subject">
-                    </div>
-
-                    <div class="form-group">
-                        <textarea rows="6" placeholder="Message" class="form-control" name="message" id="message"></textarea>
-                    </div>
-
-                    <div id="mail-success" class="success">
-                        Thank you. The Mailman is on His Way :)
-                    </div>
-
-                    <div id="mail-fail" class="error">
-                        Sorry, don't know what happened. Try later :(
-                    </div>
-
-                    <div id="cf-submit">
-                        <input type="submit" id="contact-submit" class="btn btn-transparent" value="Submit">
-                    </div>
-                </form>
-            </div>
-        </div>
+        
         <div class="row">
             <div class="col-12 col-md-4">
                 <div class="address-block contact-meta-block">
-                    <i class="tf-ion-android-pin"></i>
-                    <h4>Our Location</h4>
-                    {{ with .Site.Params.contact.address }}<p>{{ . | safeHTML }}</p>{{ end }}
+                    {{ partial "svg/nrg_big.svg" }}
+                    <h4>Our Studio</h4>
+                    {{ with .Site.Params.contact.studio }}<p>{{ . | safeHTML }}</p>{{ end }}
                 </div>
             </div>
             <div class="col-12 col-md-4">
                 <div class="phone-block contact-meta-block">
-                    <i class="tf-ion-ios-telephone"></i>
-                    <h4>Call Us</h4>
-                    <p>
-                         {{ with .Site.Params.contact.phone }}Office: {{.}} {{ end }} 
-                        <br> {{ with .Site.Params.contact.fax }} Fax: {{ . }} {{ end }}
-                    </p>
+                    <i class="tf-ion-ios-chatbubble"></i>
+                    <h4>Let's Chat</h4>
+                        <p><i style="margin: 0px 6px; font-size: 2em; vertical-align: middle;" class="tf-ion-email"></i> [fantasysphere at nextrealmgames.com]</p>
+                        <p>{{ partial "svg/discord.svg" }} <a class="btn btn-main-sm" href="https://discord.gg/pbsPTCE" target="_blank">Discord</a>
+                        </p>
                 </div>
             </div>
             <div class="col-12 col-md-4">
                 <div class="social-icons-block contact-meta-block">
                     <i class="tf-ion-ios-contact"></i>
-                    <h4>We are social</h4>
+                    <h4>Follow Us</h4>
                     <ul class="list-inline social-icon">
-                        {{ with .Site.Params.contact.facebook }}
-                        <li class="list-inline-item">
-                            <a href="{{.}}">
-                                <i class="tf-ion-social-facebook"></i>
-                            </a>
-                        </li>
-                        {{ end }}
                         {{ with .Site.Params.contact.twitter }}
                         <li class="list-inline-item">
                             <a href="{{.}}">
                                 <i class="tf-ion-social-twitter"></i>
+                            </a>
+                        </li>
+                        {{ end }}
+                        {{ with .Site.Params.contact.facebook }}
+                        <li class="list-inline-item">
+                            <a href="{{.}}">
+                                <i class="tf-ion-social-facebook"></i>
                             </a>
                         </li>
                         {{ end }}

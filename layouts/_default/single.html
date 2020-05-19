@@ -1,24 +1,37 @@
 {{ define "main" }}
 
+{{ partial "page-title.html" . }}
+
 <section class="blog-single section">
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <img src="{{ with .Params.image }}{{ . | absURL }}{{ end }}" class="w-100 mb-3" alt="Post-Image">
+                {{ if not .Params.hideTitle }}
                 <h2>{{ .Title }}</h2>
                 <div class="post-meta mb-5">
                     <ul class="list-inline">
                         <li class="list-inline-item">
-                            <span>By</span>
-                            {{ .Params.author }}
-                        </li>
-                        <li class="list-inline-item">
-                            <span>at</span>
-                            <span>{{ .Date.Format .Site.Params.dateFormat }}</span>
+                            <span>By {{ .Params.author | default .Site.Params.author }}
+                                on {{ .Date.Format .Site.Params.dateFormat }}</span>
                         </li>
                     </ul>
                 </div>
+                {{ end }}
                 {{ .Content }}
+                {{ if (eq .Section "devlogs") }}
+                    <div class="row mt-5">
+                        {{ with .PrevInSection }}
+                        <div class="col">
+                            <a class="btn btn-main" href="{{ .Permalink }}">Previous Devlog</a>
+                        </div>
+                        {{ end }}
+                        {{ with .NextInSection }}
+                        <div class="col text-right">
+                            <a class="btn btn-main" href="{{ .Permalink }}">Next Devlog</a>
+                        </div>
+                        {{ end }}
+                    </div>
+                {{end}}
             </div>
         </div>
     </div>

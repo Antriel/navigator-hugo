@@ -22,10 +22,11 @@
                     <div class="col-12 col-md-3 col-sm-6">
                         <div class="team-member text-center">
                             <div class="member-photo">
-                                <img class="img-fluid" src="{{.image | absURL }}" alt="team people">
+                                <img width="200px" class="img-fluid" src="{{.image | absURL }}" alt="team people">
                             </div>
                             {{ "<!-- member name & designation -->" | safeHTML }}
                             <div class="member-content">
+                                {{ with .realName }}<span>{{ . }}</span>{{ end }}
                                 <h3>{{ .name }}</h3>
                                 <span>{{ .designation }}</span>
                                 <p>{{ .description }}</p>
@@ -55,6 +56,13 @@
                                     <li class="list-inline-item">
                                         <a href="{{.}}">
                                             <i class="tf-ion-social-dribbble"></i>
+                                        </a>
+                                    </li>
+                                    {{ end }}
+                                    {{ with .webURL }}
+                                    <li class="list-inline-item">
+                                        <a href="{{.}}">
+                                            <i class="tf-ion-android-globe"></i>
                                         </a>
                                     </li>
                                     {{ end }}

@@ -10,7 +10,27 @@
 
   {{ partial "workingprocess.html" . }}
 
-  {{ partial "portfolio.html" . }}
+  {{ partial "blog.html" . }}
+
+  <section class="section call-to-action" style='background-image: url("{{ .Site.Params.cta.bg | absURL }}");'>
+    <div class="container">
+      <div class="row">
+			<div class="col-md-12 text-center">
+        {{ with .Site.Params.cta.title }}<h2>{{ . }}</h2>{{ end }}
+        {{ with .Site.Params.cta.subtitle }}<p>{{ . | safeHTML }}</p>{{ end }}
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+        {{ partial "subscribe.html" .}}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- {{ partial "portfolio.html" . }} -->
+
+  {{ partial "contact.html" . }}
 
   {{ partial "team.html" . }}
 
@@ -18,8 +38,14 @@
 
   {{ partial "testimonial.html" . }}
 
-  {{ partial "blog.html" . }}
+  <!-- START Bootstrap-Cookie-Alert -->
+<div class="alert text-center cookiealert" role="alert">
+  <b>Want a cookie?</b> &#x1F36A; We use cookies to improve our website. <a href="/privacy" target="_blank">Learn more</a>
 
-  {{ partial "contact.html" . }}
+  <button type="button" class="btn btn-main-sm acceptcookies" aria-label="Close">
+      OK
+  </button>
+</div>
+<!-- END Bootstrap-Cookie-Alert -->
 
 {{ end }}

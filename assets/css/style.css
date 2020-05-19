@@ -7,8 +7,7 @@ body {
 
 p {
   font-family: "Titillium Web", sans-serif;
-  color: #9a9a9a;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -25,7 +24,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
 }
 
-ol, ul {
+.top-footer ol, .top-footer ul {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -37,6 +36,7 @@ figure {
 
 a {
   transition: all .3s ease-in 0s;
+  color: #6750cc;
 }
 
 iframe {
@@ -1110,7 +1110,7 @@ a:focus, a:hover {
   visibility: visible;
 }
 
-.portfolio-block:hover .caption .search-icon {
+.portfolio-block:hover .caption .thumb-icon {
   opacity: 1;
   visibility: visible;
 }
@@ -1130,11 +1130,11 @@ a:focus, a:hover {
   font-weight: 700;
 }
 
-.portfolio-block .caption h4 a {
+.portfolio-block .caption h4 {
   color: #fff;
 }
 
-.portfolio-block .caption .search-icon {
+.portfolio-block .caption .thumb-icon {
   background: #f0326b;
   color: #fff;
   display: inline-block;
@@ -1143,6 +1143,10 @@ a:focus, a:hover {
   border-radius: 30px;
   opacity: 0;
   visibility: hidden;
+}
+
+.filtr-item a {
+  cursor: pointer;
 }
 
 /*=================================================================
@@ -1711,12 +1715,27 @@ a:focus, a:hover {
   margin-bottom: 20px;
 }
 
-.top-footer p {
+.top-footer p, .top-footer label {
   font-size: 13px;
-  line-height: 30px;
   color: #bdbdbd;
   font-weight: 300;
-  padding-right: 20px;
+}
+
+.top-footer small {
+  font-size: 11px;
+  color: #bdbdbd;
+  font-weight: 200;
+}
+
+.top-footer a {
+  color: #fff;
+  font-weight: 300;
+  transition: color .3s;
+  font-family: "Titillium Web", sans-serif;
+}
+
+.top-footer a:hover {
+  color: #f0326b;
 }
 
 .top-footer li a {
@@ -1802,3 +1821,29 @@ a:focus, a:hover {
   background: #fff;
   box-shadow: none;
 }
+
+/* Make portfolio fixed width */
+.filtr-container img.img-fluid {
+  width: 25vw;
+  width: calc(100vw / 4);
+
+}
+
+/* Copy over some octopus things */
+.email-octopus-form-row-hp{
+  position:absolute;
+  left:-5000px
+}
+.email-octopus-error-message {
+  color: #D8000C !important;
+}
+.email-octopus-success-message {
+  color: #fff !important;
+}
+.form-check-input {
+  margin-left: auto;
+}
+button:not(:disabled) {
+    cursor: pointer;
+}
+.grecaptcha-badge { visibility: hidden; }
